@@ -10,7 +10,7 @@ layout_basic = html.Div([dbc.NavbarSimple(
             children=[
                 dbc.DropdownMenuItem("", header=True),
                 dbc.DropdownMenuItem("language", href="#"),
-                dbc.DropdownMenuItem("normal", href="#"),
+                dbc.DropdownMenuItem("location", href="#"),
             ],
             nav=True,
             in_navbar=True,
@@ -74,6 +74,8 @@ trace2 = go.Bar(
     name='LA Zoo'
 )
 
+
+
 layout1 = html.Div([
     html.Div([dbc.NavbarSimple(
     children=[
@@ -81,7 +83,7 @@ layout1 = html.Div([
             children=[
                 dbc.DropdownMenuItem("", header=True),
                 dbc.DropdownMenuItem("language", href="#"),
-                dbc.DropdownMenuItem("normal", href="#"),
+                dbc.DropdownMenuItem("location", href="#"),
             ],
             nav=True,
             in_navbar=True,
@@ -117,17 +119,76 @@ layout1 = html.Div([
         ,style={'width': '49%', 'display': 'inline-block', 'vertical-align': 'middle'})])
 
 
-layout2 = html.Div([
-    dcc.Link('back to Home', href='/'),
-    html.H3('App 2'),
-    dcc.Dropdown(
-        id='app-2-dropdown',
-        options=[
-            {'label': 'App 2 - {}'.format(i), 'value': i} for i in [
-                'NYC', 'MTL', 'LA'
+
+
+
+
+head = html.Div([dbc.NavbarSimple(
+    children=[
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("", header=True),
+                dbc.DropdownMenuItem("language", href="#"),
+                dbc.DropdownMenuItem("location", href="#"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="Setting",
+        ),
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("More", header=True),
+                dbc.DropdownMenuItem("Profile", href="#"),
+                dbc.DropdownMenuItem("Log out", href="#"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="User",
+        ),
+        dbc.Button("Home", color="link", href="/")
+    ],
+    brand="FET DAAS",
+    brand_href="#",
+    color="warning",
+    dark= False,
+)])
+
+
+
+body = dbc.Container(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        html.H2("Heading"),
+                        html.P(
+                            """\
+                            Donec id elit non mi porta gravida at eget metus.
+                            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+                            nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+                            malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non
+                            mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+                            commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
+                            amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+                            odio dui."""
+                        ),
+                        dbc.Button("View details", color="secondary"),
+                    ],
+                    md=4,
+                ),
+                dbc.Col(
+                    [
+                        html.H2("Graph"),
+                        dcc.Graph(
+                            figure={"data": [{"x": [1, 2, 3], "y": [1, 4, 9]}]}
+                        ),
+                    ]
+                ),
             ]
-        ]
-    ),
-    html.Div(id='app-2-display-value'),
-    dcc.Link('Go to App 1', href='/apps/app1')
-])
+        )
+    ],
+    className="mt-4",
+)
+
+layout2 = html.Div([head, body])
