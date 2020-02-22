@@ -20,7 +20,7 @@ layout = html.Div([
 
 
 @app.callback(
-    Output('app-1-display-value', 'children'),
-    [Input('app-1-dropdown', 'value')])
+    Output('bar_plot2', 'title'),
+    [Input('my-id', 'value')])
 def display_value(value):
-    return 'You have selected "{}"'.format(value)
+    return '{}'.format(value)
