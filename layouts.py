@@ -68,6 +68,7 @@ layout_basic = html.Div([dbc.NavbarSimple(
 #layout1 & layout2#
 #########################################################
 
+# layout 1
 
 head = html.Div([dbc.NavbarSimple(
     children=[
@@ -108,7 +109,7 @@ body_1 = html.Div([
                                   {'label': '資料集2', 'value': '2'},
                                   {'label': '全都要', 'value': '999'}
                                   ],
-                         value = '999'
+                         value = '1'
                          ) ],md=3),
             ], style={'width': '150%', 'display': 'inline-block', 'vertical-align': 'middle'}),
     html.Div([dcc.Graph(id='bar_plot2',
